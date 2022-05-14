@@ -5,6 +5,9 @@
 		"factoryName": {
 			"value": "ADFGitSouvik"
 		},
+		"Git_connectionString": {
+			"value": ""
+		},
 		"containerUri": {
 			"value": ""
 		},

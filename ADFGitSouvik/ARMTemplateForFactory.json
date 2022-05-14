@@ -6,6 +6,10 @@
 			"type": "string",
 			"metadata": "Data Factory name",
 			"defaultValue": "ADFGitSouvik"
+		},
+		"Git_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Git'"
 		}
 	},
 	"variables": {
@@ -33,6 +37,109 @@
 					"cancelAfter": {}
 				},
 				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/StockEquity')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Git",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "Stock_Equity_06052022.csv",
+						"folderPath": "StockMarketData/SourceData",
+						"container": "adfdemo"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "SYMBOL",
+						"type": "String"
+					},
+					{
+						"name": " SERIES",
+						"type": "String"
+					},
+					{
+						"name": " DATE1",
+						"type": "String"
+					},
+					{
+						"name": " PREV_CLOSE",
+						"type": "String"
+					},
+					{
+						"name": " OPEN_PRICE",
+						"type": "String"
+					},
+					{
+						"name": " HIGH_PRICE",
+						"type": "String"
+					},
+					{
+						"name": " LOW_PRICE",
+						"type": "String"
+					},
+					{
+						"name": " LAST_PRICE",
+						"type": "String"
+					},
+					{
+						"name": " CLOSE_PRICE",
+						"type": "String"
+					},
+					{
+						"name": " AVG_PRICE",
+						"type": "String"
+					},
+					{
+						"name": " TTL_TRD_QNTY",
+						"type": "String"
+					},
+					{
+						"name": " TURNOVER_LACS",
+						"type": "String"
+					},
+					{
+						"name": " NO_OF_TRADES",
+						"type": "String"
+					},
+					{
+						"name": " DELIV_QTY",
+						"type": "String"
+					},
+					{
+						"name": " DELIV_PER",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/Git')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Git')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('Git_connectionString')]"
+				}
 			},
 			"dependsOn": []
 		}
