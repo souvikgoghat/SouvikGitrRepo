@@ -1,0 +1,9 @@
+{
+	"name": "ADFGitSouvik",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "58926d14-0c56-4a56-b607-529c08ca1052",
+		"tenantId": "892299ba-9261-42c2-82a4-cdf4a1739f66"
+	}
+}
