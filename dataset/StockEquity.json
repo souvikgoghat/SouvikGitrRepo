@@ -1,0 +1,85 @@
+{
+	"name": "StockEquity",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Git",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Stock_Equity_06052022.csv",
+				"folderPath": "StockMarketData/SourceData",
+				"container": "adfdemo"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "SYMBOL",
+				"type": "String"
+			},
+			{
+				"name": " SERIES",
+				"type": "String"
+			},
+			{
+				"name": " DATE1",
+				"type": "String"
+			},
+			{
+				"name": " PREV_CLOSE",
+				"type": "String"
+			},
+			{
+				"name": " OPEN_PRICE",
+				"type": "String"
+			},
+			{
+				"name": " HIGH_PRICE",
+				"type": "String"
+			},
+			{
+				"name": " LOW_PRICE",
+				"type": "String"
+			},
+			{
+				"name": " LAST_PRICE",
+				"type": "String"
+			},
+			{
+				"name": " CLOSE_PRICE",
+				"type": "String"
+			},
+			{
+				"name": " AVG_PRICE",
+				"type": "String"
+			},
+			{
+				"name": " TTL_TRD_QNTY",
+				"type": "String"
+			},
+			{
+				"name": " TURNOVER_LACS",
+				"type": "String"
+			},
+			{
+				"name": " NO_OF_TRADES",
+				"type": "String"
+			},
+			{
+				"name": " DELIV_QTY",
+				"type": "String"
+			},
+			{
+				"name": " DELIV_PER",
+				"type": "String"
+			}
+		]
+	}
+}
